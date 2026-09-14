@@ -1,0 +1,59 @@
+# =========================================
+# AXC PROJECTS
+# =========================================
+
+
+[PROJECT]
+
+id=100-days
+name=100 DAYS
+status=Currently Building
+description=A game built from scratch in C++ and raylib, shaped by ideas and experiments.
+technology=C++, raylib
+category=GAME
+day=01
+totalDays=100
+featured=true
+link=#updates
+
+
+[PROJECT]
+
+id=physics-sandbox
+name=PHYSICS SANDBOX
+status=In Development
+description=A pixel-art physics sandbox built for the web with particles, materials, gravity and weird experiments.
+technology=JavaScript, HTML, CSS
+category=EXPERIMENT
+featured=false
+day=--
+totalDays=--
+link=#
+
+
+[PROJECT]
+
+id=moon
+name=MOON
+status=In Development
+description=A custom programming language built from scratch in C++.
+technology=C++, CMake
+category=LANGUAGE
+featured=false
+day=--
+totalDays=--
+link=#
+
+
+[PROJECT]
+
+id=game-launcher
+name=GAME LAUNCHER OS
+status=Experimental
+description=A custom launcher for managing games, tools and experiments.
+technology=C++, Qt
+category=TOOL
+featured=false
+day=--
+totalDays=--
+link=#

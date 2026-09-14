@@ -1,147 +1,546 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>AXc — axc_notfound</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
-    <header class="navbar">
 
-        <div class="logo">
-            AX<span>c</span>
-        </div>
+<!-- =========================================
+     NAVBAR
+     ========================================= -->
 
-        <nav>
-            <a href="#home">HOME</a>
-            <a href="#about">ABOUT</a>
-            <a href="#projects">PROJECTS</a>
-            <a href="#updates">UPDATES</a>
-            <a href="#partners">PARTNERS</a>
-        </nav>
+<nav class="navbar">
 
-    </header>
+    <a
+        href="#home"
+        class="logo"
+    >
+        AXc
+    </a>
 
 
-    <main>
+    <div class="nav-links">
 
-        <section id="home" class="hero">
+        <a href="#home">HOME</a>
 
-            <p class="eyebrow">axc_notfound</p>
+        <a href="#about">ABOUT</a>
 
-            <h1>
-                If it doesn't exist,
-                <span>I'll make it.</span>
-            </h1>
+        <a href="#projects">PROJECTS</a>
 
-            <p class="description">
-                Games, experiments, programming and random things
-                built from scratch — just because I can.
-            </p>
+        <a href="#updates">UPDATES</a>
 
-            <div class="buttons">
-                <a href="#projects" class="button primary">
-                    VIEW PROJECTS
-                </a>
+        <a href="#partners">PARTNERS</a>
 
-                <a href="#about" class="button secondary">
-                    ABOUT AXC
-                </a>
+    </div>
+
+
+    <div class="online-status">
+
+        <span class="status-dot"></span>
+
+        ONLINE
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================
+     HERO
+     ========================================= -->
+
+<section
+    id="home"
+    class="hero"
+>
+
+
+    <div class="hero-background"></div>
+
+
+    <div class="hero-content">
+
+
+        <div class="terminal">
+
+            <div class="terminal-line">
+                <span>&gt;</span>
+                booting axc_notfound...
             </div>
 
-        </section>
-
-
-        <section id="projects" class="section">
-
-            <p class="section-label">01 / PROJECTS</p>
-
-            <h2>What am I building?</h2>
-
-            <div class="project-card">
-
-                <div>
-                    <p class="project-status">CURRENT PROJECT</p>
-
-                    <h3>100 DAYS</h3>
-
-                    <p>
-                        A game built from scratch in C++ and raylib,
-                        shaped entirely by ideas from the community.
-                    </p>
-                </div>
-
-                <div class="project-arrow">
-                    →
-                </div>
-
+            <div class="terminal-line">
+                <span>&gt;</span>
+                loading creativity...
             </div>
 
-        </section>
+            <div class="terminal-line">
+                <span>&gt;</span>
+                project_status: UNKNOWN
+            </div>
 
+            <div class="terminal-line">
+                <span>&gt;</span>
+                next_idea: ????
+            </div>
 
-        <section id="about" class="section">
-
-            <p class="section-label">02 / ABOUT</p>
-
-            <h2>Just making stuff.</h2>
-
-            <p class="large-text">
-                AXC is a personal space for games, experiments,
-                programming projects and whatever weird idea comes next.
-            </p>
-
-        </section>
-
-
-        <section id="updates" class="section">
-
-            <p class="section-label">03 / UPDATES</p>
-
-            <h2>What's happening?</h2>
-
-            <p>
-                Development updates will appear here as projects evolve.
-            </p>
-
-        </section>
-
-
-        <section id="partners" class="section">
-
-            <p class="section-label">04 / PARTNERS</p>
-
-            <h2>Partners</h2>
-
-            <p>
-                Nothing here yet.
-            </p>
-
-        </section>
-
-    </main>
-
-
-    <footer>
-
-        <div class="logo">
-            AX<span>c</span>
         </div>
 
-        <p>
-            Built by axc_notfound.
+
+
+        <div
+            id="siteLabel"
+            class="hero-label"
+        >
+            PERSONAL DEV / EXPERIMENTS / GAMES
+        </div>
+
+
+
+        <h1>
+
+            <span id="heroLine1">
+                IF IT DOESN'T
+            </span>
+
+            <br>
+
+            <span
+                id="heroLine2"
+                class="hero-accent"
+            >
+                EXIST,
+            </span>
+
+            <br>
+
+            <span id="heroLine3">
+                I'LL MAKE IT.
+            </span>
+
+        </h1>
+
+
+
+        <p
+            id="heroDescription"
+            class="hero-description"
+        >
+            Games, experiments, programming and
+            random things built from scratch.
         </p>
 
-    </footer>
 
 
-    <script src="script.js"></script>
+        <div class="hero-buttons">
+
+            <a
+                href="#projects"
+                class="button button-primary"
+            >
+                VIEW PROJECTS →
+            </a>
+
+            <a
+                href="#about"
+                class="button button-secondary"
+            >
+                ABOUT AXC
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- FLOATING CODE -->
+
+    <div class="floating-code code-1">
+        &lt;build /&gt;
+    </div>
+
+    <div class="floating-code code-2">
+        0xAXC
+    </div>
+
+    <div class="floating-code code-3">
+        // create
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     FEATURED PROJECT
+     ========================================= -->
+
+<section class="featured-section">
+
+    <div
+        id="featuredProject"
+        class="project-window"
+    >
+
+        <div class="window-header">
+
+            <span>
+                FEATURED PROJECT
+            </span>
+
+            <span class="window-status">
+                ● LOADING
+            </span>
+
+        </div>
+
+        <div class="window-content">
+
+            <div class="window-project-name">
+                LOADING...
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     PROJECTS
+     ========================================= -->
+
+<section
+    id="projects"
+    class="section"
+>
+
+
+    <div class="section-header">
+
+        <div>
+
+            <span class="section-number">
+                01
+            </span>
+
+            <h2>
+                PROJECTS
+            </h2>
+
+        </div>
+
+
+        <span class="section-label">
+            THINGS I'M BUILDING
+        </span>
+
+    </div>
+
+
+
+    <div
+        id="projectsContainer"
+        class="projects-grid"
+    >
+
+        <div class="loading-state">
+            LOADING PROJECTS...
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     ABOUT
+     ========================================= -->
+
+<section
+    id="about"
+    class="section about-section"
+>
+
+
+    <div class="section-header">
+
+        <div>
+
+            <span class="section-number">
+                02
+            </span>
+
+            <h2>
+                ABOUT
+            </h2>
+
+        </div>
+
+
+        <span class="section-label">
+            WHO IS AXC?
+        </span>
+
+    </div>
+
+
+
+    <div class="about-grid">
+
+
+        <div class="about-text">
+
+            <h3 id="aboutTitle">
+                Just making stuff.
+            </h3>
+
+
+            <p id="aboutDescription">
+
+                I'm an indie developer who likes
+                building things from scratch.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="about-terminal">
+
+
+            <div class="about-terminal-line">
+
+                <span>&gt;</span>
+                whoami
+
+            </div>
+
+
+            <div
+                class="about-terminal-value"
+                id="aboutWhoami"
+            >
+                axc_notfound
+            </div>
+
+
+
+            <div class="about-terminal-line">
+
+                <span>&gt;</span>
+                purpose
+
+            </div>
+
+
+            <div
+                class="about-terminal-value"
+                id="aboutPurpose"
+            >
+                BUILD THINGS
+            </div>
+
+
+
+            <div class="about-terminal-line">
+
+                <span>&gt;</span>
+                next_project
+
+            </div>
+
+
+            <div
+                class="about-terminal-value"
+                id="aboutNextProject"
+            >
+                ?????
+            </div>
+
+
+
+            <div class="about-terminal-line">
+
+                <span>&gt;</span>
+                status
+
+            </div>
+
+
+            <div
+                class="about-terminal-value status-green"
+                id="aboutStatus"
+            >
+                ONLINE
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     UPDATES
+     ========================================= -->
+
+<section
+    id="updates"
+    class="section"
+>
+
+
+    <div class="section-header">
+
+        <div>
+
+            <span class="section-number">
+                03
+            </span>
+
+            <h2>
+                UPDATES
+            </h2>
+
+        </div>
+
+
+        <span class="section-label">
+            DEVELOPMENT LOG
+        </span>
+
+    </div>
+
+
+
+    <div
+        id="updatesContainer"
+        class="update-list"
+    >
+
+        <div class="loading-state">
+            LOADING UPDATES...
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     PARTNERS
+     ========================================= -->
+
+<section
+    id="partners"
+    class="section partners-section"
+>
+
+
+    <div class="section-header">
+
+        <div>
+
+            <span class="section-number">
+                04
+            </span>
+
+            <h2>
+                PARTNERS
+            </h2>
+
+        </div>
+
+
+        <span class="section-label">
+            PEOPLE / COMPANIES / STUFF
+        </span>
+
+    </div>
+
+
+
+    <div
+        id="partnersContainer"
+        class="partners-grid"
+    >
+
+        <div class="loading-state">
+            LOADING PARTNERS...
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
+
+<footer class="footer">
+
+
+    <div class="footer-logo">
+        AXc
+    </div>
+
+
+    <div class="footer-text">
+        Built by axc_notfound
+    </div>
+
+
+    <div class="footer-command">
+        &gt; exit()
+    </div>
+
+
+</footer>
+
+
+
+<script
+    src="script.js"
+></script>
+
 
 </body>
 

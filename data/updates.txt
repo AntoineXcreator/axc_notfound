@@ -1,0 +1,39 @@
+# =========================================
+# AXC UPDATES
+# =========================================
+
+
+[UPDATE]
+
+day=01
+title=The 100 Days Project Begins
+description=Starting a completely new game from scratch in C++ and raylib.
+project=100-days
+link=#projects
+
+
+[UPDATE]
+
+day=02
+title=Something Is Being Built
+description=The first pieces of the game are starting to come together.
+project=100-days
+link=#projects
+
+
+[UPDATE]
+
+day=03
+title=More Experiments
+description=Testing ideas, systems and mechanics for the game.
+project=100-days
+link=#projects
+
+
+[UPDATE]
+
+day=SOON
+title=????
+description=Something is probably happening.
+project=100-days
+link=#

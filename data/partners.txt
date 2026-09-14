@@ -1,0 +1,11 @@
+# =========================================
+# AXC PARTNERS
+# =========================================
+
+
+[PARTNER]
+
+name=Partners
+description=Nothing here yet.
+website=#
+status=NOT FOUND

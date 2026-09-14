@@ -1,0 +1,21 @@
+[SITE]
+
+siteName=axc_notfound
+logo=AXc
+
+heroLabel=PERSONAL DEV / EXPERIMENTS / GAMES
+
+heroLine1=IF IT DOESN'T
+heroLine2=EXIST,
+heroLine3=I'LL MAKE IT.
+
+heroDescription=Games, experiments, programming and random things built from scratch — just because I can.
+
+aboutTitle=Just making stuff.
+
+aboutDescription=I'm an indie developer who likes building games, experiments, tools and completely random ideas from scratch.
+
+aboutWhoami=axc_notfound
+aboutPurpose=BUILD THINGS THAT SHOULDN'T EXIST YET
+aboutNextProject=?????
+aboutStatus=ONLINE
