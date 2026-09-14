@@ -1,6 +1,6 @@
 /* =========================================
    AXC / axc_notfound
-   DATA-DRIVEN WEBSITE ENGINE
+   v2 DATA ENGINE
    ========================================= */
 
 
@@ -9,13 +9,16 @@
    ========================================= */
 
 let siteData = {};
+
 let projects = [];
+
 let updates = [];
+
 let partners = [];
 
 
 /* =========================================
-   TEXT FILE PARSER
+   TXT PARSER
    ========================================= */
 
 function parseTXT(text) {
@@ -24,23 +27,26 @@ function parseTXT(text) {
 
     let current = null;
 
-    const lines = text.split(/\r?\n/);
+    const lines =
+        text.split(/\r?\n/);
+
 
     for (const rawLine of lines) {
 
-        const line = rawLine.trim();
+        const line =
+            rawLine.trim();
 
-        // Ignore empty lines
+
         if (!line) {
             continue;
         }
 
-        // Ignore comments
+
         if (line.startsWith("#")) {
             continue;
         }
 
-        // New section
+
         if (
             line.startsWith("[") &&
             line.endsWith("]")
@@ -50,56 +56,79 @@ function parseTXT(text) {
                 entries.push(current);
             }
 
+
             current = {
-                type: line.slice(1, -1),
+
+                type:
+                    line.slice(1, -1),
+
                 data: {}
+
             };
 
+
             continue;
+
         }
 
-        // key=value
-        const equalsIndex = line.indexOf("=");
+
+        const equalsIndex =
+            line.indexOf("=");
+
 
         if (
             equalsIndex === -1 ||
             !current
         ) {
+
             continue;
+
         }
+
 
         const key =
             line
                 .slice(0, equalsIndex)
                 .trim();
 
+
         const value =
             line
                 .slice(equalsIndex + 1)
                 .trim();
 
-        current.data[key] = value;
+
+        current.data[key] =
+            value;
+
     }
 
-    // Add final section
+
     if (current) {
+
         entries.push(current);
+
     }
+
 
     return entries.map(
         entry => entry.data
     );
+
 }
 
 
 /* =========================================
-   LOAD TXT FILE
+   LOAD TXT
    ========================================= */
 
 async function loadTXT(filename) {
 
     const response =
-        await fetch(`data/${filename}`);
+        await fetch(
+            `data/${filename}?v=${Date.now()}`
+        );
+
 
     if (!response.ok) {
 
@@ -109,7 +138,9 @@ async function loadTXT(filename) {
 
     }
 
+
     return await response.text();
+
 }
 
 
@@ -120,16 +151,37 @@ async function loadTXT(filename) {
 function escapeHTML(value = "") {
 
     return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
 }
 
 
 /* =========================================
-   BOOLEAN HELPER
+   BOOLEAN
    ========================================= */
 
 function isTrue(value) {
@@ -142,23 +194,54 @@ function isTrue(value) {
 
 
 /* =========================================
-   LOAD ALL WEBSITE DATA
+   TEXT SETTER
+   ========================================= */
+
+function setText(id, value) {
+
+    const element =
+        document.getElementById(id);
+
+
+    if (!element) {
+        return;
+    }
+
+
+    element.textContent =
+        value ?? "";
+
+}
+
+
+/* =========================================
+   LOAD ALL DATA
    ========================================= */
 
 async function loadAllData() {
 
     try {
 
+        console.log(
+            "> loading AXc data..."
+        );
+
+
         const [
+
             siteText,
             projectsText,
             updatesText,
             partnersText
+
         ] = await Promise.all([
 
             loadTXT("site.txt"),
+
             loadTXT("projects.txt"),
+
             loadTXT("updates.txt"),
+
             loadTXT("partners.txt")
 
         ]);
@@ -167,40 +250,32 @@ async function loadAllData() {
         const siteEntries =
             parseTXT(siteText);
 
-        const projectEntries =
+
+        projects =
             parseTXT(projectsText);
 
-        const updateEntries =
+
+        updates =
             parseTXT(updatesText);
 
-        const partnerEntries =
+
+        partners =
             parseTXT(partnersText);
 
 
         siteData =
             siteEntries[0] || {};
 
-        projects =
-            projectEntries;
-
-        updates =
-            updateEntries;
-
-        partners =
-            partnerEntries;
-
-
-        console.log(
-            "> site.txt loaded"
-        );
 
         console.log(
             `> projects: ${projects.length}`
         );
 
+
         console.log(
             `> updates: ${updates.length}`
         );
+
 
         console.log(
             `> partners: ${partners.length}`
@@ -210,12 +285,18 @@ async function loadAllData() {
         renderEverything();
 
 
+        console.log(
+            "> AXc data loaded successfully."
+        );
+
+
     } catch (error) {
 
         console.error(
             "> DATA ERROR:",
             error
         );
+
 
         showDataError();
 
@@ -232,6 +313,8 @@ function renderEverything() {
 
     renderSite();
 
+    renderStats();
+
     renderFeaturedProject();
 
     renderProjects();
@@ -244,7 +327,7 @@ function renderEverything() {
 
 
 /* =========================================
-   SITE CONTENT
+   SITE
    ========================================= */
 
 function renderSite() {
@@ -254,20 +337,24 @@ function renderSite() {
         siteData.heroLabel
     );
 
+
     setText(
         "heroLine1",
         siteData.heroLine1
     );
+
 
     setText(
         "heroLine2",
         siteData.heroLine2
     );
 
+
     setText(
         "heroLine3",
         siteData.heroLine3
     );
+
 
     setText(
         "heroDescription",
@@ -280,6 +367,7 @@ function renderSite() {
         siteData.aboutTitle
     );
 
+
     setText(
         "aboutDescription",
         siteData.aboutDescription
@@ -291,15 +379,18 @@ function renderSite() {
         siteData.aboutWhoami
     );
 
+
     setText(
         "aboutPurpose",
         siteData.aboutPurpose
     );
 
+
     setText(
         "aboutNextProject",
         siteData.aboutNextProject
     );
+
 
     setText(
         "aboutStatus",
@@ -307,14 +398,26 @@ function renderSite() {
     );
 
 
-    // Logo
+    if (siteData.siteName) {
+
+        document.title =
+            `${siteData.logo || "AXc"} — ${siteData.siteName}`;
+
+    }
+
+
     const logos =
-        document.querySelectorAll(".logo");
+        document.querySelectorAll(
+            ".logo, .footer-logo"
+        );
+
 
     logos.forEach(
         logo => {
+
             logo.textContent =
                 siteData.logo || "AXc";
+
         }
     );
 
@@ -322,26 +425,33 @@ function renderSite() {
 
 
 /* =========================================
-   SAFE TEXT SETTER
+   STATS
    ========================================= */
 
-function setText(id, value) {
+function renderStats() {
 
-    const element =
-        document.getElementById(id);
+    setText(
+        "projectCount",
+        String(projects.length).padStart(2, "0")
+    );
 
-    if (!element) {
-        return;
-    }
 
-    element.textContent =
-        value || "";
+    setText(
+        "updateCount",
+        String(updates.length).padStart(2, "0")
+    );
+
+
+    setText(
+        "currentYear",
+        new Date().getFullYear()
+    );
 
 }
 
 
 /* =========================================
-   FIND FEATURED PROJECT
+   FEATURED PROJECT
    ========================================= */
 
 function getFeaturedProject() {
@@ -354,16 +464,13 @@ function getFeaturedProject() {
 }
 
 
-/* =========================================
-   FEATURED PROJECT
-   ========================================= */
-
 function renderFeaturedProject() {
 
     const container =
         document.getElementById(
             "featuredProject"
         );
+
 
     if (!container) {
         return;
@@ -377,23 +484,48 @@ function renderFeaturedProject() {
     if (!project) {
 
         container.innerHTML = `
+
+            <div class="window-header">
+
+                <div class="window-title-group">
+
+                    <span class="window-dot"></span>
+
+                    <span>
+                        project.exe
+                    </span>
+
+                </div>
+
+                <span class="window-status">
+                    ● IDLE
+                </span>
+
+            </div>
+
+
             <div class="window-content">
-                <div class="window-title">
+
+                <div class="window-project-name">
                     NO FEATURED PROJECT
                 </div>
 
-                <div class="window-meta">
-                    STATUS: UNKNOWN
-                </div>
+                <p class="window-project-description">
+                    Nothing is currently featured.
+                </p>
+
             </div>
+
         `;
 
         return;
+
     }
 
 
     const day =
         project.day || "--";
+
 
     const totalDays =
         project.totalDays || "--";
@@ -403,12 +535,25 @@ function renderFeaturedProject() {
 
         <div class="window-header">
 
-            <span>FEATURED PROJECT</span>
+            <div class="window-title-group">
+
+                <span class="window-dot"></span>
+
+                <span>
+                    ${escapeHTML(
+                        project.id || "project.exe"
+                    )}
+                </span>
+
+            </div>
+
 
             <span class="window-status">
+
                 ● ${escapeHTML(
                     project.status || "UNKNOWN"
                 )}
+
             </span>
 
         </div>
@@ -417,45 +562,76 @@ function renderFeaturedProject() {
         <div class="window-content">
 
             <div class="window-project-name">
-                ${escapeHTML(project.name)}
+
+                ${escapeHTML(
+                    project.name || "UNTITLED"
+                )}
+
             </div>
 
 
             <div class="window-project-description">
-                ${escapeHTML(project.description)}
+
+                ${escapeHTML(
+                    project.description || ""
+                )}
+
             </div>
 
 
             <div class="window-stats">
 
+
                 <div>
-                    <span>TECH</span>
+
+                    <span>
+                        TECHNOLOGY
+                    </span>
+
                     <strong>
+
                         ${escapeHTML(
                             project.technology || "--"
                         )}
+
                     </strong>
+
                 </div>
 
 
                 <div>
-                    <span>CATEGORY</span>
+
+                    <span>
+                        CATEGORY
+                    </span>
+
                     <strong>
+
                         ${escapeHTML(
                             project.category || "--"
                         )}
+
                     </strong>
+
                 </div>
 
 
                 <div>
-                    <span>DAY</span>
+
+                    <span>
+                        PROGRESS
+                    </span>
+
                     <strong>
+
                         ${escapeHTML(day)}
                         /
                         ${escapeHTML(totalDays)}
+
                     </strong>
+
                 </div>
+
 
             </div>
 
@@ -463,11 +639,14 @@ function renderFeaturedProject() {
             <a
                 class="window-button"
                 href="${escapeHTML(
-                    project.link || "#"
+                    project.link || "#projects"
                 )}"
             >
+
                 VIEW PROJECT →
+
             </a>
+
 
         </div>
 
@@ -477,7 +656,7 @@ function renderFeaturedProject() {
 
 
 /* =========================================
-   PROJECT CARDS
+   PROJECTS
    ========================================= */
 
 function renderProjects() {
@@ -487,6 +666,7 @@ function renderProjects() {
             "projectsContainer"
         );
 
+
     if (!container) {
         return;
     }
@@ -495,89 +675,155 @@ function renderProjects() {
     if (projects.length === 0) {
 
         container.innerHTML = `
+
             <div class="empty-state">
                 NO PROJECTS FOUND.
             </div>
+
         `;
 
         return;
+
     }
 
 
     container.innerHTML =
+
         projects.map(
-            project => `
-
-                <article class="dynamic-project-card">
-
-                    <div class="dynamic-project-top">
-
-                        <span class="project-category">
-                            ${escapeHTML(
-                                project.category || "PROJECT"
-                            )}
-                        </span>
-
-                        <span class="project-status">
-                            ● ${escapeHTML(
-                                project.status || "UNKNOWN"
-                            )}
-                        </span>
-
-                    </div>
+            project => {
 
 
-                    <h3>
-                        ${escapeHTML(project.name)}
-                    </h3>
+                const hasDays =
+                    project.day &&
+                    project.totalDays &&
+                    project.day !== "--";
 
 
-                    <p>
-                        ${escapeHTML(
-                            project.description || ""
-                        )}
-                    </p>
+                return `
 
-
-                    <div class="dynamic-project-info">
-
-                        <span>
-                            ${escapeHTML(
-                                project.technology || ""
-                            )}
-                        </span>
-
-                        ${
-                            project.day &&
-                            project.totalDays &&
-                            project.day !== "--"
-                            ?
-                            `<span>
-                                DAY
-                                ${escapeHTML(project.day)}
-                                /
-                                ${escapeHTML(project.totalDays)}
-                            </span>`
-                            :
-                            ""
-                        }
-
-                    </div>
-
-
-                    <a
-                        href="${escapeHTML(
-                            project.link || "#"
-                        )}"
-                        class="dynamic-project-link"
+                    <article
+                        class="dynamic-project-card"
                     >
-                        OPEN PROJECT →
-                    </a>
 
-                </article>
 
-            `
+                        <div class="dynamic-project-top">
+
+
+                            <span
+                                class="project-category"
+                            >
+
+                                ${escapeHTML(
+                                    project.category ||
+                                    "PROJECT"
+                                )}
+
+                            </span>
+
+
+                            <span
+                                class="project-status"
+                            >
+
+                                ● ${escapeHTML(
+                                    project.status ||
+                                    "UNKNOWN"
+                                )}
+
+                            </span>
+
+
+                        </div>
+
+
+
+                        <h3>
+
+                            ${escapeHTML(
+                                project.name ||
+                                "UNTITLED"
+                            )}
+
+                        </h3>
+
+
+
+                        <p>
+
+                            ${escapeHTML(
+                                project.description ||
+                                ""
+                            )}
+
+                        </p>
+
+
+
+                        <div
+                            class="dynamic-project-info"
+                        >
+
+                            <span>
+
+                                ${escapeHTML(
+                                    project.technology ||
+                                    "--"
+                                )}
+
+                            </span>
+
+
+                            ${
+                                hasDays
+
+                                ?
+
+                                `
+
+                                <span>
+
+                                    DAY
+                                    ${escapeHTML(
+                                        project.day
+                                    )}
+                                    /
+                                    ${escapeHTML(
+                                        project.totalDays
+                                    )}
+
+                                </span>
+
+                                `
+
+                                :
+
+                                ""
+
+                            }
+
+                        </div>
+
+
+
+                        <a
+                            href="${escapeHTML(
+                                project.link || "#"
+                            )}"
+                            class="dynamic-project-link"
+                        >
+
+                            OPEN PROJECT →
+
+                        </a>
+
+
+                    </article>
+
+                `;
+
+            }
         )
+
         .join("");
 
 }
@@ -594,6 +840,7 @@ function renderUpdates() {
             "updatesContainer"
         );
 
+
     if (!container) {
         return;
     }
@@ -602,66 +849,95 @@ function renderUpdates() {
     if (updates.length === 0) {
 
         container.innerHTML = `
-            <div class="empty-state">
+
+            <div class="loading-state">
                 NO UPDATES FOUND.
             </div>
+
         `;
 
         return;
+
     }
 
 
     container.innerHTML =
+
         updates.map(
             update => `
 
-                <article class="dynamic-update">
+                <article
+                    class="dynamic-update"
+                >
+
 
                     <div class="update-day">
+
                         ${escapeHTML(
                             update.day || "--"
                         )}
+
                     </div>
 
 
                     <div class="update-content">
 
+
                         <h3>
+
                             ${escapeHTML(
-                                update.title || "UNTITLED"
+                                update.title ||
+                                "UNTITLED"
                             )}
+
                         </h3>
 
+
                         <p>
+
                             ${escapeHTML(
-                                update.description || ""
+                                update.description ||
+                                ""
                             )}
+
                         </p>
+
 
                     </div>
 
 
                     ${
                         update.link
+
                         ?
+
                         `
+
                         <a
                             href="${escapeHTML(
                                 update.link
                             )}"
                             class="update-link"
                         >
+
                             →
+
                         </a>
+
                         `
+
                         :
+
                         ""
+
                     }
+
 
                 </article>
 
             `
         )
+
         .join("");
 
 }
@@ -678,61 +954,99 @@ function renderPartners() {
             "partnersContainer"
         );
 
+
     if (!container) {
         return;
     }
 
 
-    if (partners.length === 0) {
+    /*
+        Treat the placeholder partner as
+        "no partners yet".
+    */
+
+    const realPartners =
+        partners.filter(
+            partner =>
+                partner.status !== "NOT FOUND"
+        );
+
+
+    if (realPartners.length === 0) {
 
         container.innerHTML = `
+
             <div class="partner-empty">
+
                 <div class="partner-code">
                     404
                 </div>
 
-                <div>
+                <div class="partner-empty-text">
+
                     PARTNERS NOT FOUND.
+                    <br><br>
+                    NOTHING HERE YET.
+
                 </div>
+
             </div>
+
         `;
 
         return;
+
     }
 
 
     container.innerHTML =
-        partners.map(
+
+        realPartners.map(
             partner => `
 
-                <article class="dynamic-partner">
+                <article
+                    class="dynamic-partner"
+                >
+
 
                     <div class="partner-status">
+
                         ${escapeHTML(
-                            partner.status || "UNKNOWN"
+                            partner.status ||
+                            "ACTIVE"
                         )}
+
                     </div>
 
 
                     <h3>
+
                         ${escapeHTML(
-                            partner.name || "UNKNOWN"
+                            partner.name ||
+                            "UNKNOWN"
                         )}
+
                     </h3>
 
 
                     <p>
+
                         ${escapeHTML(
-                            partner.description || ""
+                            partner.description ||
+                            ""
                         )}
+
                     </p>
 
 
                     ${
                         partner.website &&
                         partner.website !== "#"
+
                         ?
+
                         `
+
                         <a
                             href="${escapeHTML(
                                 partner.website
@@ -740,92 +1054,132 @@ function renderPartners() {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
+
                             VISIT →
+
                         </a>
+
                         `
+
                         :
+
                         ""
+
                     }
+
 
                 </article>
 
             `
         )
+
         .join("");
 
 }
 
 
 /* =========================================
-   RANDOM TERMINAL MESSAGE
+   RANDOM TERMINAL
    ========================================= */
 
-const messages = [
+const terminalMessages = [
 
     "loading creativity...",
+
     "compiling random ideas...",
+
     "searching for a good idea...",
+
     "making something weird...",
+
     "probably shouldn't work...",
+
     "building from scratch...",
+
     "project_status: UNKNOWN",
+
     "thinking...",
+
     "creating something unnecessary...",
-    "what could possibly go wrong?"
+
+    "what could possibly go wrong?",
+
+    "touching code I probably shouldn't touch...",
+
+    "inventing another project...",
+
+    "turning coffee into code...",
+
+    "checking if it works...",
+
+    "it works. somehow."
 
 ];
 
 
-const terminalLines =
-    document.querySelectorAll(
-        ".terminal-line"
-    );
+function randomTerminalMessage() {
 
-
-function randomMessage() {
-
-    const randomIndex =
+    const index =
         Math.floor(
-            Math.random() * messages.length
+            Math.random() *
+            terminalMessages.length
         );
 
-    return messages[randomIndex];
+
+    return terminalMessages[index];
 
 }
 
 
-setInterval(() => {
+const changingTerminal =
+    document.getElementById(
+        "terminalChanging"
+    );
 
-    if (terminalLines.length < 2) {
+
+function updateTerminalMessage() {
+
+    if (!changingTerminal) {
         return;
     }
 
 
-    terminalLines[1].innerHTML =
-        `<span>&gt;</span> ${escapeHTML(
-            randomMessage()
-        )}`;
+    changingTerminal.innerHTML = `
 
-}, 3000);
+        <span>&gt;</span>
+
+        ${escapeHTML(
+            randomTerminalMessage()
+        )}
+
+    `;
+
+}
+
+
+setInterval(
+    updateTerminalMessage,
+    2800
+);
 
 
 /* =========================================
    SCROLL REVEAL
    ========================================= */
 
-const sections =
+const revealElements =
     document.querySelectorAll(
-        ".section"
+        ".section, .featured-section, .final-section"
     );
 
 
-const observer =
+const revealObserver =
     new IntersectionObserver(
 
-        (entries) => {
+        entries => {
 
             entries.forEach(
-                (entry) => {
+                entry => {
 
                     if (
                         entry.isIntersecting
@@ -843,15 +1197,19 @@ const observer =
         },
 
         {
-            threshold: 0.1
+            threshold: 0.08
         }
 
     );
 
 
-sections.forEach(
-    section => {
-        observer.observe(section);
+revealElements.forEach(
+    element => {
+
+        revealObserver.observe(
+            element
+        );
+
     }
 );
 
@@ -862,16 +1220,14 @@ sections.forEach(
 
 function showDataError() {
 
-    console.error(
-        "> Could not load website data."
-    );
-
-
     const containers = [
 
         "featuredProject",
+
         "projectsContainer",
+
         "updatesContainer",
+
         "partnersContainer"
 
     ];
@@ -882,6 +1238,7 @@ function showDataError() {
 
             const element =
                 document.getElementById(id);
+
 
             if (!element) {
                 return;
@@ -901,8 +1258,8 @@ function showDataError() {
                     </span>
 
                     <small>
-                        Make sure the site is running
-                        through a local server.
+                        Make sure the files exist
+                        inside the data/ folder.
                     </small>
 
                 </div>
@@ -920,20 +1277,30 @@ function showDataError() {
    ========================================= */
 
 console.log(
-    "> booting axc_notfound..."
+    "================================="
 );
 
 console.log(
-    "> loading website data..."
+    " AXc / axc_notfound"
 );
+
+console.log(
+    " interface v2"
+);
+
+console.log(
+    "================================="
+);
+
+
+console.log(
+    "> booting..."
+);
+
 
 loadAllData();
 
 
-/* =========================================
-   CURRENT YEAR
-   ========================================= */
-
 console.log(
-    `> AXc initialized — ${new Date().getFullYear()}`
+    `> year: ${new Date().getFullYear()}`
 );

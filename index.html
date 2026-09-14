@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -9,6 +8,11 @@
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AXc — games, experiments, programming and things built from scratch."
     >
 
     <title>AXc — axc_notfound</title>
@@ -25,6 +29,16 @@
 
 
 <!-- =========================================
+     BACKGROUND
+     ========================================= -->
+
+<div class="background-grid"></div>
+
+<div class="background-glow background-glow-one"></div>
+<div class="background-glow background-glow-two"></div>
+
+
+<!-- =========================================
      NAVBAR
      ========================================= -->
 
@@ -34,20 +48,18 @@
         href="#home"
         class="logo"
     >
+        <span class="logo-bracket">[</span>
         AXc
+        <span class="logo-bracket">]</span>
     </a>
 
 
     <div class="nav-links">
 
         <a href="#home">HOME</a>
-
         <a href="#about">ABOUT</a>
-
         <a href="#projects">PROJECTS</a>
-
         <a href="#updates">UPDATES</a>
-
         <a href="#partners">PARTNERS</a>
 
     </div>
@@ -55,9 +67,9 @@
 
     <div class="online-status">
 
-        <span class="status-dot"></span>
+        <span class="status-pulse"></span>
 
-        ONLINE
+        <span>ONLINE</span>
 
     </div>
 
@@ -75,37 +87,90 @@
 >
 
 
-    <div class="hero-background"></div>
-
-
     <div class="hero-content">
 
 
-        <div class="terminal">
+        <!-- TERMINAL -->
 
-            <div class="terminal-line">
-                <span>&gt;</span>
-                booting axc_notfound...
+        <div class="hero-terminal">
+
+            <div class="terminal-top">
+
+                <div class="terminal-dots">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <span class="terminal-name">
+                    axc_notfound — terminal
+                </span>
+
             </div>
 
-            <div class="terminal-line">
-                <span>&gt;</span>
-                loading creativity...
-            </div>
 
-            <div class="terminal-line">
-                <span>&gt;</span>
-                project_status: UNKNOWN
-            </div>
+            <div class="terminal-body">
 
-            <div class="terminal-line">
-                <span>&gt;</span>
-                next_idea: ????
+                <div class="terminal-line">
+
+                    <span class="terminal-prompt">
+                        axc@dev:~$
+                    </span>
+
+                    <span>
+                        ./boot
+                    </span>
+
+                </div>
+
+
+                <div class="terminal-line terminal-dim">
+
+                    <span>&gt;</span>
+                    initializing creativity...
+
+                </div>
+
+
+                <div
+                    class="terminal-line terminal-changing"
+                    id="terminalChanging"
+                >
+
+                    <span>&gt;</span>
+                    loading creativity...
+
+                </div>
+
+
+                <div class="terminal-line terminal-dim">
+
+                    <span>&gt;</span>
+                    status:
+                    <strong class="terminal-online">
+                        ONLINE
+                    </strong>
+
+                </div>
+
+
+                <div class="terminal-cursor-line">
+
+                    <span>axc@dev:~$</span>
+
+                    <span class="cursor"></span>
+
+                </div>
+
             </div>
 
         </div>
 
 
+
+        <!-- HERO LABEL -->
 
         <div
             id="siteLabel"
@@ -116,13 +181,13 @@
 
 
 
-        <h1>
+        <!-- HERO TITLE -->
+
+        <h1 class="hero-title">
 
             <span id="heroLine1">
                 IF IT DOESN'T
             </span>
-
-            <br>
 
             <span
                 id="heroLine2"
@@ -130,8 +195,6 @@
             >
                 EXIST,
             </span>
-
-            <br>
 
             <span id="heroLine3">
                 I'LL MAKE IT.
@@ -145,11 +208,13 @@
             id="heroDescription"
             class="hero-description"
         >
-            Games, experiments, programming and
-            random things built from scratch.
+            Games, experiments, programming and random
+            things built from scratch — just because I can.
         </p>
 
 
+
+        <!-- HERO BUTTONS -->
 
         <div class="hero-buttons">
 
@@ -157,35 +222,95 @@
                 href="#projects"
                 class="button button-primary"
             >
-                VIEW PROJECTS →
+                VIEW PROJECTS
+                <span>→</span>
             </a>
+
 
             <a
                 href="#about"
                 class="button button-secondary"
             >
-                ABOUT AXC
+                WHO IS AXC?
             </a>
 
         </div>
 
 
+
+        <!-- HERO STATS -->
+
+        <div class="hero-stats">
+
+            <div class="hero-stat">
+
+                <span class="hero-stat-value" id="projectCount">
+                    --
+                </span>
+
+                <span class="hero-stat-label">
+                    PROJECTS
+                </span>
+
+            </div>
+
+
+            <div class="hero-stat">
+
+                <span class="hero-stat-value" id="updateCount">
+                    --
+                </span>
+
+                <span class="hero-stat-label">
+                    UPDATES
+                </span>
+
+            </div>
+
+
+            <div class="hero-stat">
+
+                <span class="hero-stat-value">
+                    100
+                </span>
+
+                <span class="hero-stat-label">
+                    DAYS
+                </span>
+
+            </div>
+
+        </div>
+
     </div>
 
 
 
-    <!-- FLOATING CODE -->
+    <!-- DECORATIVE CODE -->
 
-    <div class="floating-code code-1">
-        &lt;build /&gt;
+    <div class="floating-code floating-code-one">
+        C++ / raylib
     </div>
 
-    <div class="floating-code code-2">
+    <div class="floating-code floating-code-two">
         0xAXC
     </div>
 
-    <div class="floating-code code-3">
+    <div class="floating-code floating-code-three">
         // create
+    </div>
+
+    <div class="floating-code floating-code-four">
+        _notfound
+    </div>
+
+
+    <div class="scroll-indicator">
+
+        <span></span>
+
+        SCROLL
+
     </div>
 
 
@@ -199,27 +324,61 @@
 
 <section class="featured-section">
 
-    <div
-        id="featuredProject"
-        class="project-window"
-    >
+    <div class="featured-container">
 
-        <div class="window-header">
+        <div class="featured-heading">
 
-            <span>
-                FEATURED PROJECT
-            </span>
+            <div>
 
-            <span class="window-status">
-                ● LOADING
+                <span class="eyebrow">
+                    CURRENTLY BUILDING
+                </span>
+
+                <h2>
+                    FEATURED PROJECT
+                </h2>
+
+            </div>
+
+
+            <span class="featured-code">
+                0x01
             </span>
 
         </div>
 
-        <div class="window-content">
 
-            <div class="window-project-name">
-                LOADING...
+        <div
+            id="featuredProject"
+            class="project-window"
+        >
+
+            <div class="window-header">
+
+                <div class="window-title-group">
+
+                    <span class="window-dot"></span>
+
+                    <span>
+                        project.exe
+                    </span>
+
+                </div>
+
+
+                <span class="window-status">
+                    ● LOADING
+                </span>
+
+            </div>
+
+
+            <div class="window-content">
+
+                <div class="window-project-name">
+                    LOADING...
+                </div>
+
             </div>
 
         </div>
@@ -255,9 +414,17 @@
         </div>
 
 
-        <span class="section-label">
-            THINGS I'M BUILDING
-        </span>
+        <div class="section-header-right">
+
+            <span class="section-label">
+                THINGS I'M BUILDING
+            </span>
+
+            <span class="section-command">
+                ./projects --list
+            </span>
+
+        </div>
 
     </div>
 
@@ -315,7 +482,12 @@
     <div class="about-grid">
 
 
-        <div class="about-text">
+        <div class="about-main">
+
+            <span class="eyebrow">
+                / ABOUT_AXC
+            </span>
+
 
             <h3 id="aboutTitle">
                 Just making stuff.
@@ -324,10 +496,27 @@
 
             <p id="aboutDescription">
 
-                I'm an indie developer who likes
-                building things from scratch.
+                I'm an indie developer who likes building
+                games, experiments, tools and completely
+                random ideas from scratch.
 
             </p>
+
+
+            <div class="about-line"></div>
+
+
+            <div class="about-manifesto">
+
+                <span class="quote-mark">
+                    "
+                </span>
+
+                <span>
+                    If it doesn't exist, I'll make it.
+                </span>
+
+            </div>
 
         </div>
 
@@ -336,70 +525,110 @@
         <div class="about-terminal">
 
 
-            <div class="about-terminal-line">
+            <div class="about-terminal-header">
 
-                <span>&gt;</span>
-                whoami
+                <span>
+                    SYSTEM_INFO
+                </span>
 
-            </div>
-
-
-            <div
-                class="about-terminal-value"
-                id="aboutWhoami"
-            >
-                axc_notfound
-            </div>
-
-
-
-            <div class="about-terminal-line">
-
-                <span>&gt;</span>
-                purpose
+                <span>
+                    ●
+                </span>
 
             </div>
 
 
-            <div
-                class="about-terminal-value"
-                id="aboutPurpose"
-            >
-                BUILD THINGS
+            <div class="about-terminal-body">
+
+
+                <div class="about-row">
+
+                    <span class="about-key">
+                        whoami
+                    </span>
+
+                    <span
+                        id="aboutWhoami"
+                        class="about-value"
+                    >
+                        axc_notfound
+                    </span>
+
+                </div>
+
+
+                <div class="about-row">
+
+                    <span class="about-key">
+                        purpose
+                    </span>
+
+                    <span
+                        id="aboutPurpose"
+                        class="about-value"
+                    >
+                        BUILD THINGS
+                    </span>
+
+                </div>
+
+
+                <div class="about-row">
+
+                    <span class="about-key">
+                        next_project
+                    </span>
+
+                    <span
+                        id="aboutNextProject"
+                        class="about-value"
+                    >
+                        ?????
+                    </span>
+
+                </div>
+
+
+                <div class="about-row">
+
+                    <span class="about-key">
+                        status
+                    </span>
+
+                    <span
+                        id="aboutStatus"
+                        class="about-value status-green"
+                    >
+                        ONLINE
+                    </span>
+
+                </div>
+
+
+                <div class="about-row">
+
+                    <span class="about-key">
+                        creativity
+                    </span>
+
+                    <span class="about-value">
+                        ∞
+                    </span>
+
+                </div>
+
+
             </div>
 
 
+            <div class="about-terminal-footer">
 
-            <div class="about-terminal-line">
+                <span>
+                    axc@dev:~$
+                </span>
 
-                <span>&gt;</span>
-                next_project
+                <span class="cursor"></span>
 
-            </div>
-
-
-            <div
-                class="about-terminal-value"
-                id="aboutNextProject"
-            >
-                ?????
-            </div>
-
-
-
-            <div class="about-terminal-line">
-
-                <span>&gt;</span>
-                status
-
-            </div>
-
-
-            <div
-                class="about-terminal-value status-green"
-                id="aboutStatus"
-            >
-                ONLINE
             </div>
 
 
@@ -419,7 +648,7 @@
 
 <section
     id="updates"
-    class="section"
+    class="section updates-section"
 >
 
 
@@ -438,9 +667,17 @@
         </div>
 
 
-        <span class="section-label">
-            DEVELOPMENT LOG
-        </span>
+        <div class="section-header-right">
+
+            <span class="section-label">
+                DEVELOPMENT LOG
+            </span>
+
+            <span class="section-command">
+                tail -f updates.log
+            </span>
+
+        </div>
 
     </div>
 
@@ -448,7 +685,7 @@
 
     <div
         id="updatesContainer"
-        class="update-list"
+        class="updates-timeline"
     >
 
         <div class="loading-state">
@@ -512,35 +749,111 @@
 
 
 <!-- =========================================
+     FINAL CTA
+     ========================================= -->
+
+<section class="final-section">
+
+    <div class="final-terminal">
+
+        <div class="final-terminal-line">
+
+            <span class="terminal-prompt">
+                axc@dev:~$
+            </span>
+
+            <span>
+                what's_next?
+            </span>
+
+        </div>
+
+
+        <div class="final-terminal-output">
+
+            <span class="final-symbol">
+                &gt;
+            </span>
+
+            <span>
+                something weird probably.
+            </span>
+
+        </div>
+
+
+        <div class="final-terminal-line final-blink">
+
+            <span class="terminal-prompt">
+                axc@dev:~$
+            </span>
+
+            <span class="cursor"></span>
+
+        </div>
+
+    </div>
+
+
+    <h2>
+        SEE YOU IN<br>
+        THE NEXT BUILD.
+    </h2>
+
+
+</section>
+
+
+
+<!-- =========================================
      FOOTER
      ========================================= -->
 
 <footer class="footer">
 
+    <div class="footer-left">
 
-    <div class="footer-logo">
-        AXc
+        <div class="footer-logo">
+            AXc
+        </div>
+
+        <div class="footer-text">
+            Built by axc_notfound
+        </div>
+
     </div>
 
 
-    <div class="footer-text">
-        Built by axc_notfound
+    <div class="footer-center">
+
+        <span>
+            IF IT DOESN'T EXIST,
+        </span>
+
+        <span class="footer-orange">
+            I'LL MAKE IT.
+        </span>
+
     </div>
 
 
-    <div class="footer-command">
-        &gt; exit()
-    </div>
+    <div class="footer-right">
 
+        <span>
+            axc_notfound
+        </span>
+
+        <span>
+            © <span id="currentYear"></span>
+        </span>
+
+    </div>
 
 </footer>
 
 
 
-<script
-    src="script.js"
-></script>
-
+<script src="script.js"></script>
 
 </body>
 
