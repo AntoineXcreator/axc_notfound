@@ -5,7 +5,7 @@
 
 [PARTNER]
 
-name=Partners
-description=Nothing here yet.
+name=kerat_starlifting
+description=Main Partner and main support
 website=#
-status=NOT FOUND
+status=Online
